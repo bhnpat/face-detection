@@ -5,7 +5,7 @@ from matplotlib import patches
 from scores import average_precision, auc
 
 def plot_history(history):
-    # summarize history for accuracy
+    
     plt.plot(history.history['acc'])
     plt.plot(history.history['val_acc'])
     plt.title('model accuracy')
@@ -13,7 +13,8 @@ def plot_history(history):
     plt.xlabel('epoch')
     plt.legend(['train', 'val'], loc='upper left')
     plt.show()
-    # summarize history for loss
+   
+
     plt.plot(history.history['loss'])
     plt.plot(history.history['val_loss'])
     plt.title('model loss')
@@ -23,17 +24,18 @@ def plot_history(history):
     plt.show()
 
 def visualize_samples(data, n_cols=5, n_rows=1):
-    """Visualize samples."""
     plt.figure(figsize = (3*n_cols,3*n_rows))
+    
     for n,i in enumerate(np.random.randint(len(data), size = n_cols*n_rows)):
         plt.subplot(n_rows,n_cols,n+1)
         plt.axis('off')
         plt.imshow(data[i])
+    
     plt.show()
     
 def visualize_heatmap(images, heatmap, n_cols=5, n_rows=1):
-    """Visualize heatmap"""
     plt.figure(figsize=(3 * n_cols, 2 * 3 * n_rows))
+    
     for n,i in enumerate(np.arange(n_cols * n_rows)):
         plt.subplot(2 * n_rows, n_cols, n + 1)
         plt.axis('off')
@@ -42,6 +44,7 @@ def visualize_heatmap(images, heatmap, n_cols=5, n_rows=1):
         plt.subplot(2 * n_rows, n_cols, n + 1 + n_cols)
         plt.axis('off')
         plt.imshow(heatmap[i])
+    
     plt.show()
 
 def show_bboxes(bboxes, ax, color="black", text=None):
